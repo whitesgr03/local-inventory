@@ -45,9 +45,10 @@ const categoryDetail = asyncHandler(async (req, res, next) => {
 		  })
 		: next(createError(404, "Category not found", { type: "category" }));
 });
-const categoryCreateGet = asyncHandler((req, res) =>
+const categoryCreateGet = (req, res) =>
 	res.render("categoryForm", {
 		title: "Add a new category",
+	});
 const categoryCreatePost = asyncHandler(async (req, res) => {
 	const validationSchema = {
 		name: {
