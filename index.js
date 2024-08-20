@@ -41,9 +41,3 @@ const handleServer = async () => {
 };
 
 handleServer();
-
-// 上傳到 github
-
-// 將mongodb 版的修改
-// image name
-// escape

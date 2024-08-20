@@ -76,5 +76,3 @@ const handleSeeding = async () => {
 };
 
 export default handleSeeding;
-
-// 不需使用 TTL 只需根據是否超過 expired 而排除搜尋內容
