@@ -24,7 +24,7 @@ block content
                 ul.list
                     each product, index in products
                         li 
-                            a(href=product.url) #{index + 1}. #{product.name}
+                            a(href=`/inventory/products/${product.id}`) #{index + 1}. #{product.name}
             else
                 p This category has no products.
 
