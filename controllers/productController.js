@@ -97,7 +97,7 @@ const productCreateGet = asyncHandler(async (req, res) => {
 });
 const productCreatePost = [
 	uploadFile.single("image"),
-	asyncHandler(async (req, res, next) => {
+	asyncHandler(async (req, res) => {
 		const { rows: categories } = await db.query(
 			`SELECT id, name FROM categories ORDER BY name;`
 		);

@@ -48,9 +48,7 @@ const categoryDetail = asyncHandler(async (req, res, next) => {
 const categoryCreateGet = asyncHandler((req, res) =>
 	res.render("categoryForm", {
 		title: "Add a new category",
-	})
-);
-const categoryCreatePost = asyncHandler(async (req, res, next) => {
+const categoryCreatePost = asyncHandler(async (req, res) => {
 	const validationSchema = {
 		name: {
 			trim: true,
