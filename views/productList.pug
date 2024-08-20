@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    div.product
+        div.topBar
+            div.title
+                span.icon.tabler--dog-bowl
+                h2=title
+            div.feature
+                a(href='/inventory/products/create')
+                    span.icon.mdi--add
+                    | Add new
+        
+        ul.list
+            each product, index in products
+                li 
+                    a(href=`/inventory/products/${product.id}`) #{index + 1}. #{product.name}
+

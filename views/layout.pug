@@ -1,0 +1,66 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title Project Y
+        script(type='text/javascript', src='/javascripts/index.js', defer)
+        link(rel='stylesheet', href='/stylesheets/index.css')
+    body
+        script(type='text/javascript', src='/javascripts/changeDarkScheme.js')
+        div.container
+            header
+                nav
+                    ul
+                        li
+                            a(href='/')
+                                span.icon.mdi--home
+                                | Home
+                        li
+                            a(href='/inventory/categories')
+                                span.icon.mdi--pets
+                                | All Categories
+                        li
+                            a(href='/inventory/products')
+                                span.icon.tabler--dog-bowl
+                                | All Products
+                
+                div.hamburger
+                    button(type='button' tabindex)
+                        div
+                            span.line
+                            span.line
+                            span.line
+                        | Menu
+
+                h1.logo
+                    a(href='/') Project Y
+
+                
+                button.theme(type='button' tabindex)
+                    span.icon.mdi--weather-sunny
+                    span.icon.mdi--moon-and-stars
+                    | Theme
+
+            main
+                nav
+                    ul
+                        li
+                            a(href='/')
+                                span.icon.mdi--home
+                                | Home
+                        li
+                            a(href='/inventory/categories')
+                                span.icon.mdi--pets
+                                | All Categories
+                        li
+                            a(href='/inventory/products')
+                                span.icon.tabler--dog-bowl
+                                | All Products
+                div.content
+                    block content
+
+            footer 
+                a(href="https://github.com/whitesgr03/project-inventory" rel="noreferrer" target="_blank" aria-label="visit author's github")
+                    span.icon.mdi--github
+                span © 2023 - Designed & coded by Weiss Bai

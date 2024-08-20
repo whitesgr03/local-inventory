@@ -1,0 +1,94 @@
+extends layout
+
+block content
+    div.product
+        h2= title
+
+        form(method="POST"  enctype="multipart/form-data")
+
+            div
+                label(class= errors && errors.name ? 'error' : ''  for="product_name") Name
+                    input#product_name(
+                        type="text" 
+                        name="name" 
+                        value= product ? product.name : ''
+                        title="The name is required and must be less than 100 long." 
+                        maxlength="100"
+                        pattern="^.{1,100}$"
+                        required
+                    )
+                span.message(aria-live="polite")= errors && errors.name ? errors.name.msg : 'This is a placeholder'
+            div
+                label(class= errors && errors.category ? 'error' : '' for="product_category") Category
+                    select#product_category(
+                        name='category' 
+                        title="The category is required"
+                        required
+                        )
+                        if product && product.category_id
+                            option(value="" disabled) Please choose a category
+                        else
+                            option(value="" disabled selected) Please choose a category
+
+                        for category in categories
+                            if product && (product.category_id === category.id)
+                                option(value=category.id selected)= category.name
+                            else
+                                option(value=category.id)= category.name
+                span.message(aria-live="polite")= errors && errors.category ? errors.category.msg : 'This is a placeholder'
+            div
+                label(class= errors && errors.price ? 'error' : '' for="product_price") Price
+                    input#product_price(
+                        type="number" 
+                        name="price" 
+                        min= 1
+                        step="0.01"
+                        value=product ? product.price : ''
+                        title="The price is required and must be a number." 
+                        required
+                    )
+                span.message(aria-live="polite")= errors && errors.price ? errors.price.msg : 'This is a placeholder'
+            div 
+                label(class= errors && errors.quantity ? 'error' : '' for="product_quantity") Quantity
+                    input#product_quantity(
+                        type="number" 
+                        name="quantity"
+                        max= 999
+                        value=product ? product.quantity : ''
+                        title="The quantity is required and must be a number." 
+                        required
+                    )
+                span.message(aria-live="polite")= errors && errors.quantity ? errors.quantity.msg : 'This is a placeholder'
+            div.description
+                label(class= errors && errors.description ? 'error' : ''  for="product_description") Description
+                    textarea#product_description(
+                        name="description" 
+                        title="The description is required" 
+                        rows="5"
+                        required
+                    )= product ? product.description : ''
+                span.message(aria-live="polite")= errors && errors.description ? errors.description.msg : 'This is a placeholder'
+            div.uploadImage
+                label(
+                    class= errors && errors.image ? 'error' : '' 
+                    for="product_image") Upload image (only .jpeg)
+                    div.image(class= product && product.imageUrl ? 'preview' : '')
+                        img(src= product ? product.imageUrl : '')
+                        div 
+                            span.icon.mdi--file-image-outline 
+                            | Please upload a .jpeg file
+                    input#product_image(
+                        type="file" 
+                        name="image"
+                        accept="image/jpeg"
+                        title="The image is required, size must be less than 500 kb, width and height must be 800 or greater."
+                        require
+                    )
+                span.message(aria-live="polite")= errors && errors.image ? errors.image.msg : 'This is a placeholder'
+
+            div
+                if product && product.id
+                    a(href=`/inventory/products/${product.id}`) Cancel
+                else
+                    a(href='/inventory/products') Cancel
+                button.submit(type="submit") Submit

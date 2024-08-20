@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    div.category
+        div.topBar
+            div.title
+                span.icon.mdi--pets
+                h2= title
+            div.feature
+                a(href='/inventory/categories/create') 
+                    span.icon.mdi--add
+                    | Add new
+        
+
+        ul.list
+            each category, index in categories
+                li 
+                    a(href=`/inventory/categories/${category.id}`) #{index + 1}. #{category.name}
+

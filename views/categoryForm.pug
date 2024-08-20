@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    div.category
+        h2= title
+
+        form(method="POST")
+            div
+                label(class= errors && errors.name ? 'error' : '' for="category_name") Name
+                    input#category_name(
+                        type="text" 
+                        name="name" 
+                        value= category ? category.name : ''
+                        title="The name is required and must be less than 30 long." 
+                        maxlength="30"
+                        pattern="^.{1,30}$"
+                        required
+                    )
+                span.message(aria-live="polite")= errors && errors.name ? errors.name.msg : 'This is a placeholder'
+            div
+                label(class= errors && errors.description ? 'error' : '' for="category_description") Description
+                    textarea#category_description(
+                        name="description" 
+                        title="The description is required" 
+                        required
+                        rows="5"
+                    )= category ? category.description : ''
+                span.message(aria-live="polite")= errors && errors.description ? errors.description.msg : 'This is a placeholder'
+            div
+                a(href=`/inventory/categories/${category && category.id ? category.id : ''}`) Cancel
+                button.submit(type="submit") Submit

@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    div.product
+        if !title
+            div.topBar
+                h2= product.name
+                if product.expired !== Infinity
+                    div.feature
+                        a(href=`/inventory/products/${product.id}/delete`) 
+                            span.icon.mdi--delete
+                            | Delete
+                        a(href=`/inventory/products/${product.id}/update`) 
+                            span.icon.mdi--edit
+                            | Update
+            div.detail
+                div.image
+                    img(
+                        src=product.imageUrl, 
+                        alt=product.name, 
+                        sizes="(min-width: 1000px) 300px, 400px",
+                        srcset=`
+                            ${product.imageUrl_300} 300w,
+                            ${product.imageUrl_400} 400w,
+                            ${product.imageUrl_600} 600w,
+                            ${product.imageUrl} 800w
+                            `, 
+                        )
+                div.info
+                    p #[strong Category:] #{product.category}
+                    p #[strong Price:] $#{product.price}
+                    p #[strong Quantity:] #{product.quantity}
+                    p #[strong Description:] #{product.description}
+        else 
+            h2= title
+            div.delete
+                p Do you really want to delete?
+                p.name= product.name
+                form(method='POST')
+                    a(href=`/inventory/products/${product.id}`) Cancel
+                    button.submit(type='submit') Delete
+
+
+//- srcset 沒使用到小圖

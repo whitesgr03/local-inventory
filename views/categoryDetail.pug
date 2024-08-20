@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    div.category
+        if !title
+            div.topBar
+                h2= category.name
+                if category.expired !== Infinity
+                    div.feature
+                        a(href=`/inventory/categories/${category.id}/delete`) 
+                            span.icon.mdi--delete
+                            | Delete
+                        a(href=`/inventory/categories/${category.id}/update`) 
+                            span.icon.mdi--edit
+                            | Update
+
+            p #[strong Description:] #{category.description}
+            
+            h3 Category's products
+            if alert 
+                p.alert #[strong Delete the following products before attempting to delete this category.]
+
+            if products.length
+                ul.list
+                    each product, index in products
+                        li 
+                            a(href=product.url) #{index + 1}. #{product.name}
+            else
+                p This category has no products.
+
+        else
+            h2= title
+            div.delete
+                p Do you really want to delete?
+                p.name= category.name
+                form(method='POST')
+                    a(href=`/inventory/categories/${category.id}`) Cancel
+                    button.submit(type='submit') Delete
