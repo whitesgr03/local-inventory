@@ -1,0 +1,28 @@
+footer {
+	grid-area: footer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 5px;
+	padding: 10px;
+	box-shadow: 0px -5px 5px 1px var(--light-scheme-shadow);
+	background-color: var(--light-scheme-bgc);
+	color: var(--light-scheme-color);
+	z-index: 1;
+}
+
+/* dark scheme */
+.dark footer {
+	border-top: 1px solid var(--dark-scheme-shadow);
+	background-color: var(--dark-scheme-bgc);
+	color: var(--dark-scheme-color);
+	box-shadow: none;
+}
+
+@media (min-width: 1000px) {
+	footer {
+		box-shadow: none;
+		border-top: 1px solid var(--light-scheme-color);
+	}
+}

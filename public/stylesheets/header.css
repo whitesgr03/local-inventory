@@ -1,0 +1,114 @@
+header {
+	grid-area: header;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: sticky;
+	top: 0;
+	left: 0;
+	right: 0;
+	box-shadow: 0px 5px 5px 1px var(--light-scheme-shadow);
+	background-color: var(--light-scheme-bgc);
+	color: var(--light-scheme-color);
+	z-index: 1;
+}
+
+header nav {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 20%;
+	transform: translateX(-100%);
+	transition: transform 0.1s ease;
+}
+
+header button {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+}
+
+header h1 a {
+	font-style: italic;
+	color: var(--light-scheme-highlight-color);
+}
+
+header button:hover {
+	background-color: var(--light-button-link-hover-bgc);
+}
+
+/* hamburger */
+header .hamburger button > div {
+	height: 45px;
+	width: 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	position: relative;
+}
+header .hamburger button > div .line {
+	--hamburgerLineHeight: 3px;
+	display: inline-block;
+	width: 100%;
+	height: var(--hamburgerLineHeight);
+	transition: all 0.3s ease, background-color 0s;
+	background-color: var(--light-scheme-color);
+}
+header .hamburger button > div.active {
+	justify-content: center;
+}
+header .hamburger button > div.active .line:nth-child(1) {
+	transform: translateY(calc(var(--hamburgerLineHeight))) rotate(-45deg);
+}
+header .hamburger button > div.active .line:nth-child(2) {
+	opacity: 0;
+}
+header .hamburger button > div.active .line:nth-child(3) {
+	transform: translateY(calc(0px - var(--hamburgerLineHeight))) rotate(45deg);
+}
+
+/* dark scheme */
+.dark header {
+	border-bottom: 1px solid var(--light-scheme-shadow);
+	background-color: var(--dark-scheme-bgc);
+	color: var(--dark-scheme-color);
+	box-shadow: none;
+}
+
+.dark header h1 a {
+	color: var(--dark-scheme-highlight-color);
+}
+
+.dark header button:hover {
+	background-color: var(--dark-button-link-hover-bgc);
+}
+
+.dark header .hamburger button > div .line {
+	background-color: var(--dark-scheme-color);
+}
+
+@media (min-width: 500px) {
+	header nav {
+		right: 50%;
+	}
+}
+
+@media (min-width: 1000px) {
+	header {
+		box-shadow: none;
+		border-bottom: 1px solid var(--light-scheme-color);
+	}
+
+	header nav {
+		display: none;
+	}
+	header h1 {
+		margin-left: 10px;
+		font-size: 2.5rem;
+	}
+
+	header .hamburger {
+		display: none;
+	}
+}

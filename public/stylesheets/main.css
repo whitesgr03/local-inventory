@@ -1,0 +1,315 @@
+@import url("home.css");
+@import url("form.css");
+
+main {
+	grid-area: main;
+	display: grid;
+	grid-template: 1fr / 1fr;
+	position: relative;
+	background-color: #e1e9ef;
+	color: var(--light-scheme-color);
+	z-index: 0;
+}
+
+main nav {
+	display: none;
+}
+
+main .content {
+	margin: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+main .content > .error {
+	flex: 1 1 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 20px;
+}
+
+main .content > .error .title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	row-gap: 20px;
+}
+
+main .content > .error .title h1 {
+	font-size: 1.5rem;
+}
+
+main .content > .error .title h1 span {
+	font-weight: inherit;
+}
+
+main .content > .error .icon {
+	width: 80px;
+	height: 80px;
+}
+
+main .content > .error .message {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+/* category and product */
+main .category,
+main .product {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+	flex: 1 1 100%;
+}
+
+main .category .alert {
+	color: var(--light-error-label-color);
+}
+
+main h2 .icon {
+	width: var(--icon-desktop-size);
+	height: var(--icon-desktop-size);
+}
+
+/* topBar */
+main .topBar {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+main .topBar .title {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+}
+
+main .topBar .feature {
+	display: flex;
+	justify-content: flex-end;
+	column-gap: 20px;
+}
+
+main .topBar .feature .icon {
+	width: var(--icon-desktop-size);
+	height: var(--icon-desktop-size);
+}
+
+main .topBar .feature a {
+	padding: 0 5px;
+	display: flex;
+	align-items: center;
+	border-radius: 10px;
+	font-weight: 700;
+	color: var(--light-scheme-highlight-color);
+}
+
+main .topBar .feature a:hover {
+	background-color: var(--light-button-link-hover-bgc);
+}
+
+/* delete */
+main .delete {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex: 1 1 100%;
+	row-gap: 20px;
+}
+
+main .delete form {
+	flex-direction: row;
+	border: 0;
+	column-gap: 60px;
+}
+
+main .delete form button.submit {
+	background-color: var(--light-error-label-color);
+	color: var(--dark-scheme-color);
+}
+
+main .delete form button.submit:hover {
+	background-color: var(--light-button-link-hover-bgc);
+	color: var(--light-scheme-color);
+}
+
+main .delete .name {
+	display: inline-block;
+	font-size: 1.2rem;
+	font-weight: 700;
+	font-style: italic;
+	color: var(--light-scheme-highlight-color);
+}
+
+/* detail */
+
+main .product .detail {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+main .product .detail .image {
+	text-align: center;
+}
+
+main .product .detail .info {
+	display: flex;
+	flex-direction: column;
+	row-gap: 20px;
+}
+
+/* list */
+main ul.list {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--light-scheme-color);
+}
+
+main ul.list li a {
+	display: inline-block;
+	width: 100%;
+	padding: 10px;
+}
+
+main ul.list li:not(:last-of-type) a {
+	border-bottom: 1px solid var(--light-scheme-color);
+}
+main ul.list li a:hover {
+	font-style: italic;
+	background-color: var(--light-list-link-hover-bgc);
+}
+
+/* dark scheme */
+.dark main {
+	background-color: var(--dark-scheme-bgc);
+	color: var(--dark-scheme-color);
+}
+
+.dark main ul.list,
+.dark main ul.list li:not(:last-of-type) a {
+	border-color: var(--dark-scheme-color);
+}
+
+.dark main ul.list li a:hover {
+	background-color: var(--dark-list-link-hover-bgc);
+}
+
+.dark main .topBar .feature a {
+	font-weight: 500;
+	color: var(--dark-scheme-highlight-color);
+}
+
+.dark main .topBar .feature a:hover {
+	background-color: var(--dark-button-link-hover-bgc);
+}
+
+.dark main .category .alert {
+	color: var(--dark-error-label-color);
+}
+
+.dark main .delete .name {
+	font-size: 1.2rem;
+	font-weight: 500;
+	font-style: italic;
+	color: var(--dark-scheme-highlight-color);
+}
+
+.dark main .delete form button.submit {
+	background-color: var(--light-error-label-color);
+	color: var(--dark-scheme-color);
+}
+
+.dark main .delete form button.submit:hover {
+	background-color: var(--light-list-link-hover-bgc);
+	color: var(--dark-scheme-bgc);
+}
+
+@media (min-width: 400px) {
+	main .product .detail .image img {
+		max-width: 400px;
+	}
+}
+
+@media (min-width: 500px) {
+	main .content {
+		margin: 20px 5%;
+	}
+}
+
+@media (min-width: 700px) {
+	main .content {
+		margin: 20px 15%;
+	}
+}
+
+@media (min-width: 900px) {
+	main .content {
+		margin: 20px 20%;
+	}
+}
+
+@media (min-width: 1000px) {
+	main {
+		grid-template:
+			"sidebar content" 1fr
+			"sidebar content" 1fr
+			/ 20% 80%;
+	}
+
+	main nav {
+		display: block;
+		grid-area: sidebar;
+		position: relative;
+		border-bottom: 0;
+		border-top: 0;
+		border-color: var(--light-scheme-color);
+	}
+
+	main .content {
+		grid-area: content;
+		margin: 20px 10%;
+	}
+
+	main h2 .icon {
+		display: none;
+	}
+
+	main .product {
+		height: 100%;
+	}
+
+	main .product .detail {
+		flex-direction: row;
+		row-gap: 0;
+		column-gap: 20px;
+		margin: auto 0;
+	}
+
+	main .product .detail .image img {
+		max-width: 300px;
+	}
+
+	main .product .detail .image {
+		flex: 1 1 100%;
+	}
+
+	main .product .detail .info {
+		flex: 1 1 100%;
+		justify-content: space-around;
+	}
+
+	main .content > .error .title h1 {
+		font-size: 2rem;
+	}
+
+	main .content > .error .icon {
+		width: 100px;
+		height: 100px;
+	}
+}

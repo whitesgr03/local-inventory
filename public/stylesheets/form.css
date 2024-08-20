@@ -1,0 +1,217 @@
+form {
+	border-radius: 10px;
+	border: 2px solid var(--light-scheme-color);
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 10px;
+}
+
+form > div {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	width: 100%;
+}
+form > div:last-of-type {
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+form label.error {
+	color: var(--light-error-label-color);
+}
+form label.error > * {
+	border-color: var(--light-error-label-color);
+}
+form label.error + span {
+	opacity: 1;
+	color: var(--light-error-label-color);
+}
+
+/* This label pseudo-class will override error style  */
+form label:hover,
+form label:focus-within {
+	color: var(--light-scheme-highlight-color);
+}
+
+form label > * {
+	width: 100%;
+	border-radius: 10px;
+	margin-top: 10px;
+	border: 2px solid transparent;
+	background-color: var(--light-scheme-bgc);
+	padding: 5px;
+	min-height: var(--icon-desktop-size);
+	color: var(--light-scheme-color);
+}
+
+form label:hover > *,
+form label > *:focus {
+	border-color: var(--light-scheme-highlight-color);
+}
+
+form label + span {
+	display: inline-block;
+	opacity: 0;
+}
+
+form > div.uploadImage label > * {
+	cursor: pointer;
+	max-width: 400px;
+	aspect-ratio: 1 / 1;
+}
+
+form > div.uploadImage label .image > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	row-gap: 20px;
+	height: 100%;
+}
+
+form > div.uploadImage label .image img {
+	border-radius: 20px;
+	display: none;
+	object-fit: cover;
+	height: 100%;
+}
+
+form > div.uploadImage label .image.preview img {
+	display: block;
+}
+
+form > div.uploadImage label .image.preview > div {
+	display: none;
+}
+
+form a,
+form button.submit {
+	min-height: 45px;
+	border-radius: 10px;
+	border: 2px solid var(--light-scheme-color);
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+form button.submit {
+	background-color: var(--light-success-label-color);
+	color: var(--dark-scheme-color);
+}
+
+form a {
+	background-color: var(--light-scheme-bgc);
+	color: var(--light-scheme-color);
+}
+
+form button.submit:hover {
+	background-color: var(--dark-success-label-color);
+	color: var(--light-scheme-color);
+}
+
+form a:hover {
+	color: var(--dark-scheme-color);
+	background-color: var(--light-scheme-highlight-color);
+}
+
+/* dark scheme */
+.dark form {
+	border-color: var(--dark-scheme-color);
+	border-width: 1px;
+}
+
+.dark form label.error {
+	color: var(--dark-error-label-color);
+}
+.dark form label.error > * {
+	border-color: var(--dark-error-label-color);
+}
+.dark form label.error + span {
+	color: var(--dark-error-label-color);
+}
+
+.dark form label:hover,
+.dark form label:focus-within {
+	color: var(--dark-scheme-highlight-color);
+}
+
+.dark form label > * {
+	border-color: transparent;
+	background-color: var(--dark-button-link-hover-bgc);
+	color: var(--dark-scheme-color);
+}
+
+.dark form label:hover > *,
+.dark form label > *:focus {
+	border-color: var(--dark-scheme-highlight-color);
+}
+
+.dark form a {
+	color: var(--dark-scheme-color);
+	background-color: var(--dark-button-link-hover-bgc);
+	border: 0;
+}
+
+.dark form button.submit {
+	color: var(--dark-scheme-color);
+	background-color: var(--light-success-label-color);
+	border: 0;
+}
+
+.dark form a:hover {
+	color: var(--light-scheme-color);
+	background-color: var(--dark-scheme-highlight-color);
+}
+
+.dark form button.submit:hover {
+	color: var(--light-scheme-color);
+	background-color: var(--dark-success-label-color);
+}
+
+@media (min-width: 400px) {
+	form > div {
+		max-width: 400px;
+	}
+}
+
+@media (min-width: 1000px) {
+	.product form {
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: stretch;
+		column-gap: 30px;
+	}
+
+	form {
+		padding: 15px 30px;
+	}
+
+	form > div {
+		max-width: none;
+		flex: 1 1 calc(50% - 15px);
+	}
+
+	form > div.description label {
+		flex: 1 1 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	form > div.description label textarea {
+		flex: 1 1 100%;
+	}
+
+	form > div.uploadImage label {
+		display: flex;
+		flex-direction: column;
+	}
+
+	form > div.uploadImage label .image {
+		align-self: center;
+	}
+}
