@@ -80,11 +80,8 @@ const categoryCreatePost = asyncHandler(async (req, res) => {
 
 	const schemaErrors = validationResult(req);
 
-	const category = {
-		...req.body,
-	};
-
 	const addNewCategory = async () => {
+		const category = matchedData(req);
 		const oneDay = 24 * 60 * 60 * 1000;
 		const SQL = {
 			text: `
@@ -107,7 +104,9 @@ const categoryCreatePost = asyncHandler(async (req, res) => {
 	const renderErrorMessages = () => {
 		res.render("categoryForm", {
 			title: "Add a new category",
-			category,
+			category: {
+				...req.body,
+			},
 			errors: schemaErrors.mapped(),
 		});
 	};
